@@ -8,22 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      node-version: ${{ steps.node-version.outputs.node-version }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        id: node-version
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: 'npm'
-      - run: npm install
-      - run: npx playwright install chromium
-      - run: npm run lint
-
   api-tests:
     runs-on: ubuntu-latest
     env:
@@ -38,6 +22,7 @@ jobs:
           node-version: 20.x
       - run: npm install
       - run: npx playwright install chromium
+      - run: npm run lint
       - run: npx playwright test --project=api
       
       - name: Upload API Test Results
@@ -45,29 +30,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: api-playwright-test-results
-          path: test-results/
-
-  e2e-tests:
-    runs-on: ubuntu-latest
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      API_BASE_URL: ${{ secrets.API_BASE_URL }}
-    needs: setup
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - run: npm install
-      - run: npx playwright install chromium
-      - run: npx playwright test --project=e2e
-
-      - name: Upload E2E Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: e2e-playwright-test-results
           path: test-results/

@@ -376,6 +376,19 @@ This project uses **global setup** to authenticate **once** before all e2e tests
  **Cleaner code** - No login logic in test files  
 
 ---
+API Tests
+![API Tests](./imgs/api-tests.png)
+
+E2E Tests
+![API Tests](./imgs/e2e-tests.png)
+
+CI (Workflow - GithAction) - Only for API becase application is not available for the country (Needs to use VPN in that case.)
+
+[Link to GitHub Action](https://github.com/araujosnathan/playwright-automation-testing/actions)
+
+![CI Tests](./imgs/ci-tests.png)
+
+---
 ## Analyses
 [Key Areas](/key-areas.md)
 

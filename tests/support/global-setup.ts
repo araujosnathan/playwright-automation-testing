@@ -68,7 +68,7 @@ async function globalSetup(config: FullConfig) {
       
       const beforeLoginScreenshot = path.join(__dirname, '../../test-results/before-login.png');
       await page.screenshot({ path: beforeLoginScreenshot, fullPage: true });
-      console.log(`📸 Before login screenshot saved to: ${beforeLoginScreenshot}`);
+      console.log(`Before login screenshot saved to: ${beforeLoginScreenshot}`);
       await homePage.waitForHomeBeDisplayed();
       await homePage.goToSignForm();
       await signInPage.doLogin({ username: user.username, password: user.password });
