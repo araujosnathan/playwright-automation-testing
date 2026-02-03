@@ -1,4 +1,4 @@
-name: Run E2E and API Automated Tests
+name: Run API Automated Tests
 
 on:
   push:
