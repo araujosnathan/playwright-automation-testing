@@ -1,3 +1,4 @@
+[![Run Automated Tests](https://github.com/araujosnathan/playwright-automation-testing/actions/workflows/run-automated-tests.yml/badge.svg)](https://github.com/araujosnathan/playwright-automation-testing/actions/workflows/run-automated-tests.yml)
 # Automation Testing
 
 End-to-end and API Test automation using Playwright with TypeScript.
@@ -396,3 +397,4 @@ CI (Workflow - GithAction) - Only for API becase application is not available fo
 
 ---
 Thank you!
+
