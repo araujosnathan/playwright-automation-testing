@@ -6,6 +6,7 @@ export class HomePage extends BasePage {
     private readonly locators = {
         pageContentAnimate: this.page.getByTestId('page-container-animate'),
         signInButton: this.page.getByTestId('signin-nav'),
+        buttonGotIt: this.page.locator('button').filter({ hasText: 'Got it!' }),
 
     }
     constructor(page: Page) {
@@ -14,7 +15,9 @@ export class HomePage extends BasePage {
 
     async waitForHomeBeDisplayed(){
         await this.locators.pageContentAnimate.waitFor({ state: 'visible', timeout: 30000 })
-        await this.page.locator('button').filter({ hasText: 'Got it!' }).click();
+        if (await this.locators.buttonGotIt.isVisible({ timeout: 5000 })) {
+            await this.locators.buttonGotIt.click();
+        }
     }
 
     async goToSignForm(){
