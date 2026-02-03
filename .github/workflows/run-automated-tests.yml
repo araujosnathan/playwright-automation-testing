@@ -13,7 +13,6 @@ jobs:
     env:
       JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
       JIRA_AUTH_TOKEN: ${{ secrets.JIRA_AUTH_TOKEN }}
-    needs: setup
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
